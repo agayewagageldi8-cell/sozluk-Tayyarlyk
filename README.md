@@ -1,0 +1,2 @@
+# sozluk-Tayyarlyk
+first site
