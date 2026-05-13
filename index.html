@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>ICT Master</title>
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome & Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div id="flash-overlay"></div>
+
+<div class="container">
+    <!-- MENU SCREEN -->
+    <div id="menu-screen" class="screen active">
+        <div class="menu-header">
+            <div class="info-circle-btn" id="infoButtonMenu"><i class="fas fa-info"></i></div>
+        </div>
+        <i class="fas fa-laptop-code main-icon"></i>
+        <h1>ICT Master</h1>
+        <div id="best-score" class="stat-value">Iň ýokary netije: %0</div>
+        
+        <button class="btn main-action" id="startGameBtn">Oýuna Başla</button>
+        <button class="btn main-action" id="showListBtn">Sözleriň Sanawy</button>
+        <button class="btn main-action" id="showResultsBtn">Netijeler</button>
+    </div>
+    
+    <!-- INFO SCREEN -->
+    <div id="info-screen" class="screen">
+        <h2><i class="fas fa-info-circle"></i> Programma barada</h2>
+        <div class="info-content">
+            <p><strong>ICT Master</strong> — kompýuter terminlerini öwrenmek üçin interaktiw trener.</p>
+            <p>Kompýuter ylymlary we Maglumat tehnologiýalar fakulteti üçin testlere taýýarlaýan programma</p>
+            <p><i class="fas fa-mobile-alt"></i> Telefon we planşet üçin amatly interfeýs.</p>
+            <center><strong>Sözleri öwrenmek we testden geçmek isleýän bolsaňyz aşakdakylary ediň</strong></center>
+            <p>1) 100 sany sözi 3 gezek gaýtalaň.</p>
+            <p>2) Saýlamaly režimde 1 sagat oýuny oýnaň.</p>
+            <p>3) Ýazmaly režimde 1 sagat oýuny oýnaň.</p>
+            <strong>Netijede siz eýýäm 2 sagadyn içinde teste 50% taýýar</strong>
+            <hr>
+            <center><h5>Dörediji: Agaýew Agageldi</h5></center>
+        </div>
+        <button class="btn menu-btn" id="backToMenuFromInfo">Esasy Menýu</button>
+    </div>
+
+    <!-- UNIT SELECTION SCREEN -->
+    <div id="unit-screen" class="screen">
+        <h2>Bölümi Saýlaň</h2>
+        <div class="unit-grid">
+            <button class="btn unit-sel" data-unit="unit1">Unit 1</button>
+            <button class="btn unit-sel" data-unit="unit2">Unit 2</button>
+            <button class="btn unit-sel" data-unit="unit3">Unit 3</button>
+            <button class="btn unit-sel" data-unit="unit4">Unit 4</button>
+            <button class="btn unit-sel" data-unit="unit5">Unit 5</button>
+        </div>
+        <button class="btn all-mix" id="mixAllBtn">Ählisini Garyşdyr</button>
+        <button class="btn menu-btn" id="backToMenuFromUnit">Esasy Menýu</button>
+    </div>
+
+    <!-- MODE SELECTION SCREEN -->
+    <div id="mode-screen" class="screen">
+        <h2>Režimi Saýlaň</h2>
+        <div class="mode-buttons-wrapper">
+            <button class="btn mode-sel" data-mode="options">Saýlamaly</button>
+            <button class="btn mode-sel" data-mode="typing">Ýazmaly</button>
+        </div>
+        <button class="btn menu-btn" id="backToMenuFromMode">Esasy Menýu</button>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <button id="exitGameBtn" class="exit-btn"><i class="fas fa-times"></i></button>
+            <div id="timer">0</div>
+            <div id="progress">1/25</div>
+        </div>
+        <div class="question-box">
+            <p id="q-lang-label"></p>
+            <h2 id="q-word">...</h2>
+        </div>
+        <div id="options-container">
+            <button class="option-btn" id="opt0"></button>
+            <button class="option-btn" id="opt1"></button>
+            <button class="option-btn" id="opt2"></button>
+        </div>
+        <div id="typing-container" style="display:none;">
+            <input type="text" id="word-input" placeholder="Jogaby ýazyň..." autocomplete="off">
+            <button class="btn" id="submitTypingBtn">Tassykla</button>
+        </div>
+        <div id="correct-answer-message"></div>
+    </div>
+
+    <!-- WORD LIST SCREEN -->
+    <div id="list-screen" class="screen">
+        <h2>Sözleriň Sanawy</h2>
+        <div class="list-tabs" id="listTabs">
+            <button class="tab-btn" data-unit="unit1">Unit1</button>
+            <button class="tab-btn" data-unit="unit2">Unit2</button>
+            <button class="tab-btn" data-unit="unit3">Unit3</button>
+            <button class="tab-btn" data-unit="unit4">Unit4</button>
+            <button class="tab-btn" data-unit="unit5">Unit5</button>
+        </div>
+        <div class="scroll-area">
+            <table>
+                <thead>
+                    <tr><th>#</th><th>Türkmen</th><th>English</th></tr>
+                </thead>
+                <tbody id="list-body"></tbody>
+            </table>
+        </div>
+        <button class="btn menu-btn" id="backToMenuFromList">Esasy Menýu</button>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div id="results-screen" class="screen">
+        <h2>Netijeler</h2>
+        <div class="results-panel">
+            <div class="results-header">
+                <span class="results-title"><i class="fas fa-trophy"></i> Gazanan utuklaryňyz</span>
+                <button id="clearAllScoresBtn" class="clear-results-btn"><i class="fas fa-trash-alt"></i> hemmäni poz</button>
+            </div>
+            <div id="scoresContainer" class="scores-list"></div>
+        </div>
+        <button class="btn menu-btn" id="backToMenuFromResults">Esasy Menýu</button>
+    </div>
+</div>
+
+<!-- External JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
